@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="quant_product_repack_wizard_form_view" model="ir.ui.view">
+            <field name="name">quant.product.repack.wizard.form</field>
+            <field name="model">quant.product.repack.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group col="2" colspan="2">
+                        <field name="product_id"/>
+                    </group>
+                    <group col="4" colspan="4">
+                        <field name="location_id"
+                               domain="[('usage','in',['internal', 'transit'])]"
+                               widget="selection"/>
+                        <field name="lot_id" domain="[('product_id', '=', product_id), ('product_qty_store', '>', 0)]"/>
+                        <field name="initial_qty"
+                               readonly="1" force_save="1"/>
+                        <field name="main_qty" readonly="1" force_save="1"/>
+                    </group>
+                    <group col="2" colspan="2">
+                        <field name="lines_ids">
+                            <tree editable="bottom" create="0" delete="0">
+                                <field name="product_ref" readonly="1" force_save="1"></field>
+                                <field name="lot_ref" readonly="1" force_save="1"></field>
+                                <field name="qty"></field>
+                                <field name="quant_lot_repack_id" invisible="1"></field>
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <field name="scrap_qty"/>
+                    </group>
+                    <!-- <group col="2" colspan="2">
+                        <field name="product_dest_id"/>
+                    </group>
+                    <group col="4" colspan="4">
+                        <field name="lot_dest_calculated" readonly="1" force_save="1"/>
+                        <field name="final_qty" force_save="1"/>
+                    </group>
+
+                    <group>
+                        <field name="lot_dest_id" invisible="1"/>
+                    </group> -->
+
+
+
+                    <footer>
+                        <button string="Process Repack" name="process_repack" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <!-- wizard action on res.partner -->
+       <!--  <act_window id="quant_product_repack_wizard_action"
+            name="Assistance Product Repack"
+            res_model="quant.product.repack.wizard"
+            view_mode="form" target="new"/>   -->
+
+
+
+
+        <menuitem name="Assistance Product Repack"
+            id="quant_product_repack_wizard_menuitem"
+            parent="stock.menu_stock_warehouse_mgmt"
+            groups="base.group_user"
+            sequence="0"
+            action="quant_product_repack_wizard_action"/>
+
+        <record model="ir.actions.act_window" id="quant_product_repack_wizard_action">
+            <field name="name">Assistance Product Repack</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">quant.product.repack.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="quant_product_repack_wizard_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+
+    </data>
+</odoo>

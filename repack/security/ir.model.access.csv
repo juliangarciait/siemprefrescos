@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+repack.access_quant_product_repack_wizard,access_quant_product_repack_wizard,repack.model_quant_product_repack_wizard,base.group_user,1,1,1,1
+repack.access_quant_product_repack_lines_wizard,access_quant_product_repack_lines_wizard,repack.model_quant_product_repack_lines_wizard,base.group_user,1,1,1,1
