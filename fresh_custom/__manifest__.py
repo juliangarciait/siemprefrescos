@@ -8,7 +8,7 @@
     'sequence': 1,
     "email": 'ernesto.r.2.em@gmail.com',
     "website": '',
-    'depends': ['vendor_inventory'],
+    'depends': ['vendor_inventory', 'stock_available'],
     'data': [
         'security/ir.model.access.csv',
         'security/res_groups.xml',
