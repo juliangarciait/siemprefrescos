@@ -11,6 +11,8 @@ _logger = logging.getLogger(__name__)
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
+    invoice_date = fields.Date(related='invoice_ids.invoice_date', string='Invoice Date')
+    
     #custom_state_delivery = fields.Char(string='State Delivery',
     #    compute='_compute_get_delivery_custom_state',
     #    help='Automatic assignation state from custom state delivery:\n')
@@ -129,6 +131,7 @@ class SaleOrderLine(models.Model):
     tracking = fields.Selection(related='product_id.tracking', readonly=True)
     lot_id = fields.Many2one('stock.lot', 'Lot', copy=False)
     lot_available_sell = fields.Float('Stock', readonly=1)
+    #invoice_date = fields.Date(related='partner_id.phone', string='Number')
 
 
 
