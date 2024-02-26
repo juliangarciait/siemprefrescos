@@ -106,8 +106,9 @@ class StockMoveLine(models.Model):
         """
         Onchange_lod_id
         """
-        if self.picking_id and self.product_uom_qty > 0 and self.lot_id:
-            self.update_force_unreserve_move_line()
+        #if self.picking_id and self.product_uom_qty > 0 and self.lot_id:
+        #    self.update_force_unreserve_move_line()
+        pass
 
     def update_force_unreserve_move_line(self):
         """
