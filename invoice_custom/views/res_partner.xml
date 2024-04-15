@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="l10n_mx_edi_inh_40_res_partner_form_inherited" model="ir.ui.view">
+            <field name="name">res.partner.form40.inherit.l10n_mx_edi.inherited</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="l10n_mx_edi.l10n_mx_edi_inh_res_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='addenda']/group" position="inside">
+                    <field name="l10n_mx_edi_usage" string="Uso CFDI"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="l10n_mx_edi_inh_res_partner_form_usage" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.l10n_mx_edi_usage</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="l10n_mx_edi_40.l10n_mx_edi_inh_40_res_partner_form"/>
+        <field name="arch" type="xml">
+           <xpath expr="//page[name='addenda']/group" position="inside">
+                <field name="l10n_mx_edi_usage"/>
+            </xpath>
+            <field name="l10n_mx_edi_no_tax_breakdown" position="after">
+                <field name="l10n_mx_edi_usage"/>
+            </field>
+        </field>
+    </record>
+
+</odoo> -->
+

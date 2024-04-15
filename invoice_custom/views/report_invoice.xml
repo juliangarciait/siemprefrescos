@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- QWeb Reports -->
+    <template id="report_invoice_document_mx_custom" inherit_id="account.report_invoice_document">
+        <xpath expr="//p[@name='payment_communication']" position="replace">
+            <span t-field="o.partner_id"/> Debo(emos) y pagare(mos) incondicionalmente por este pagare a la orden de SIEMPRE FRESCOS PRODUCTOS MEXICANOS en esta ciudad de Gomez Palacio Durango el 
+            <span t-field="o.invoice_date"/>, la cantidad de <span t-esc="tax_totals['formatted_amount_total']"/>, la cantidad de
+valor de mercancia a mi(nuestra) entera satisfaccion. Este pagare esta sujeto a la condicion de que al
+no pagarse a su vencimiento causara intereses al tipo de:__
+% mensual pagadero en esta ciudad. juntamente con el principal y que asi mismo seran exigibles desde
+la fecha de su vencimiento de este documento hasta el dia de su liquidacion total.
+        </xpath>
+    </template>
+</odoo>

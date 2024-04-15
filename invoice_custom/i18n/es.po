@@ -1,0 +1,130 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* invoice_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-16 22:11+0000\n"
+"PO-Revision-Date: 2021-06-16 18:21-0500\n"
+"Last-Translator: Jesús Alan Ramos Rodríguez <alan.ramos@jarsa.com.mx>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Source-Language: en\n"
+"Language: es\n"
+"X-Generator: Poedit 3.0\n"
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__g01
+msgid "Acquisition of merchandise"
+msgstr "Adquisición de mercancías"
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__g02
+msgid "Returns, discounts or bonuses"
+msgstr "Devoluciones, descuentos o bonificaciones"
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__g03
+msgid "General expenses"
+msgstr "Gastos en general"
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__i04
+msgid "Computer equipment and accessories"
+msgstr "Equipo de cómputo y accesorios"
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__i01
+msgid "Constructions"
+msgstr "Construcciones"
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__d09
+msgid "Deposits in savings accounts, premiums based on pension plans."
+msgstr "Depósitos en cuentas para el ahorro, primas que tengan como base planes de pensiones."
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__i05
+msgid "Dices, dies, molds, matrices and tooling"
+msgstr "Dados, troqueles, moldes, matrices y herramental"
+
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__i02
+msgid "Office furniture and equipment investment"
+msgstr "Mobilario y equipo de oficina por inversiones"
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__i08
+msgid "Other machinery and equipment"
+msgstr "Otra maquinaria y equipo"
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__i07
+msgid "Satellite communications"
+msgstr "Comunicaciones satelitales"
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__i06
+msgid "Telephone communications"
+msgstr "Comunicaciones telefónicas"
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__i03
+msgid "Transportation equipment"
+msgstr "Equipo de transporte"
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__d04
+msgid "Donations"
+msgstr "Donativos"
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__d03
+msgid "Funeral expenses"
+msgstr "Gastos funerarios"
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__d08
+msgid "Mandatory School Transportation Expenses"
+msgstr "Gastos de transportación escolar obligatoria"
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__d02
+msgid "Medical expenses for disability"
+msgstr "Gastos médicos por incapacidad o discapacidad"
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__d07
+msgid "Medical insurance premiums"
+msgstr "Primas por seguros de gastos médicos"
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__d01
+msgid "Medical, dental and hospital expenses."
+msgstr "Honorarios médicos, dentales y gastos hospitalarios."
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__d05
+msgid "Real interest effectively paid for mortgage loans (room house)"
+msgstr "Intereses reales efectivamente pagados por créditos hipotecarios (casa habitación)"
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__d06
+msgid "Voluntary contributions to SAR"
+msgstr "Aportaciones voluntarias al SAR"
+
+#. module: invoice_custom
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__p01
+msgid "To define  (CFDI 3.3 only)"
+msgstr "Por definir (solo CFDI 3.3)"
+
+#. module: l10n_mx_edi_40
+#: model:ir.model.fields.selection,name:invoice_custom.selection__res_partner__l10n_mx_edi_usage__s01
+msgid "Without fiscal effects"
+msgstr "Sin efectos fiscales"
