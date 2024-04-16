@@ -15,7 +15,8 @@
     ],
     'data' : [
         'views/report_invoice.xml',
-        'views/res_partner.xml'
+        'views/res_partner.xml',
+        'views/account_move.xml'
 
     ],
 }
