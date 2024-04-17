@@ -82,14 +82,14 @@ class Picking(models.Model):
                             next_number)
         account_tag_lot = self.env['account.analytic.account'].search([('name', '=', tag_lot)], limit=1)
         if not account_tag_lot:
-            account_tag_lot = self.env['account.analytic.account'].sudo().create({'company_id': 1, 'name': tag_lot,'active': True, 'partner_id': False, 'code': tag_lot, 'plan_id': 6})
+            account_tag_lot = self.env['account.analytic.account'].sudo().create({'company_id': 1, 'name': tag_lot,'active': True, 'partner_id': False, 'plan_id': 6})
 
         # Tag Product
         if not product_id.product_tmpl_id.account_tag_id:
             tag_product = 'P' + product_id.product_tmpl_id.lot_code_prefix
             product_tag_lot = self.env['account.analytic.account'].search([('name', '=', tag_product)], limit=1)
             if not product_tag_lot:
-                product_tag_lot = self.env['account.analytic.account'].sudo().create({'name': tag_product, 'company_id': 1,'active': True, 'partner_id': False, 'code': tag_product, 'plan_id': 4 })
+                product_tag_lot = self.env['account.analytic.account'].sudo().create({'name': tag_product, 'company_id': 1,'active': True, 'partner_id': False, 'plan_id': 4 })
         else:
             product_tag_lot = product_id.product_tmpl_id.account_tag_id
 
@@ -97,7 +97,7 @@ class Picking(models.Model):
         tag_supplier = picking_id.partner_id.lot_code_prefix
         supplier_tag_lot = self.env['account.analytic.account'].search([('name', '=', tag_supplier)], limit=1)
         if not supplier_tag_lot:
-            supplier_tag_lot = self.env['account.analytic.account'].sudo().create({'name': tag_supplier, 'company_id': 1,'active': True, 'partner_id': False, 'code': tag_supplier, 'plan_id': 5 })
+            supplier_tag_lot = self.env['account.analytic.account'].sudo().create({'name': tag_supplier, 'company_id': 1,'active': True, 'partner_id': False, 'plan_id': 5 })
 
         return [(6, 0, [account_tag_lot.id, product_tag_lot.id, supplier_tag_lot.id])]
     

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_stock_lot_form_inherited_tag" model="ir.ui.view">
+        <field name="name">view.stock.lot.form.inherited.tag</field>
+        <field name="model">stock.lot</field>
+        <field name="inherit_id" ref="stock.view_production_lot_form"/>
+        <field name="arch" type="xml">        
+            <!-- Lot code -->            
+            <xpath expr="//field[@name='ref']" position="before">
+                <field name="analytic_tag_ids" widget="many2many_tags" string="Analitics Tags"/>  
+			</xpath>
+        </field>
+    </record>
+</odoo>

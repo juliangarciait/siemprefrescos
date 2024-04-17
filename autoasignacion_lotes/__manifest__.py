@@ -18,6 +18,7 @@
         'views/product_template.xml',
         'views/stock_picking.xml',
         'views/purchase_order.xml',
+        'views/stock_lot.xml',
         'wizard/partner_secuence_change.xml'
 
     ],
