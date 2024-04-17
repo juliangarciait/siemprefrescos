@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_stock_form_inherit_02" model="ir.ui.view">
+        <field name="name">res.partner.stock.property.form.inherit.02</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.view_partner_property_form"/>
+        <field name="arch" type="xml">       
+            <!-- Lot code -->      
+            <xpath expr="//group[@name='purchase']" position="after">
+                <group string="Lots" name="lots">
+                    <field name="lot_code_prefix" attrs="{'invisible': [('type', '!=', 'contact')]}"/>
+                    <label for="sequence_id"/>
+                    <div>
+                        <field name="sequence_id" class="oe_inline"/>
+                        <button string="Create Sequence" type="object"
+                            name="action_create_vendor_sequence"
+                            attrs="{'invisible': ['|',('sequence_id', '!=', False), ('lot_code_prefix', '=', False)]}"/>
+                        <button string="Update Sequence" type="object"
+                            name="action_change_vendor_sequence"
+                            attrs="{'invisible': [('sequence_id', '=', False)]}"/> 
+                    </div>
+                </group>
+            </xpath>  
+        </field>
+    </record>
+
+</odoo>

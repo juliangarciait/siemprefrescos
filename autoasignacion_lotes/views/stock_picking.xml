@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_picking_form_inherited" model="ir.ui.view">
+        <field name="name">view.picking.form.inherited</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">        
+            <!-- Lot code -->            
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="display_create_lot_name" invisible="1"/>  
+				<field name="create_lot_name" string="Lotes Automaticos" attrs="{'invisible': [('display_create_lot_name', '=', False)]}"/>
+			</xpath>
+        </field>
+    </record>
+</odoo>

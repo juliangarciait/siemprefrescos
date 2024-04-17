@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_purchase_order_form_inherited_lot" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit.lot</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">        
+            <!-- Lot code -->            
+            <xpath expr="//field[@name='currency_id']" position="after">
+				<field name="lot" attrs="{'invisible': [('lot', '=', 'False')]}"/>
+                <!-- <field name="account_tag_id"/> -->
+			</xpath>
+        </field>
+    </record>
+
+    <record id="view_purchase_order_tree_inherited_lot" model="ir.ui.view">
+        <field name="name">purchase.order.tree.inherit.lot</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_view_tree"/>
+        <field name="arch" type="xml">        
+            <!-- Lot code -->            
+            <field name="invoice_status" position="after">
+				<field name="lot" />
+                <!-- <field name="account_tag_id"/> -->
+			</field>
+        </field>
+    </record>
+</odoo>
