@@ -56,11 +56,11 @@ class Picking(models.Model):
                     if not line.lot_name and not line.lot_id:
                         lot_name = self.get_next_lot_name(line.product_id, line.picking_id, next_number)
                         # Ensure Tag Tax Lot Ids
-                        #tax_tag_lot_ids = self.get_lot_tax_tag(line.product_id, line.picking_id, next_number)
+                        tag_lot_ids = self.get_lot_tag(line.product_id, line.picking_id, next_number)
                         lot = self.env['stock.lot'].create(
                             {'name': lot_name, 'product_id': line.product_id.id,
                              'company_id': line.move_id.company_id.id,
-                             #'analytic_tag_ids': tax_tag_lot_ids,
+                             'analytic_tag_ids': tag_lot_ids,
                              }
                         )
                         line.write({'lot_name': lot.name, 'lot_id': lot.id})
@@ -75,6 +75,31 @@ class Picking(models.Model):
         # # Check lot Traceability
         # self.action_fix_order_with_move_lines()
         return super().button_validate()
+    
+    def get_lot_tag(self, product_id, picking_id, next_number):
+        # Tag Lot
+        tag_lot = '%s%s' % (picking_id.partner_id.lot_code_prefix,
+                            next_number)
+        account_tag_lot = self.env['account.analytic.account'].search([('name', '=', tag_lot)], limit=1)
+        if not account_tag_lot:
+            account_tag_lot = self.env['account.analytic.account'].sudo().create({'company_id': 1, 'name': tag_lot,'active': True, 'partner_id': False, 'code': tag_lot, 'plan_id': 6})
+
+        # Tag Product
+        if not product_id.product_tmpl_id.account_tag_id:
+            tag_product = 'P' + product_id.product_tmpl_id.lot_code_prefix
+            product_tag_lot = self.env['account.analytic.account'].search([('name', '=', tag_product)], limit=1)
+            if not product_tag_lot:
+                product_tag_lot = self.env['account.analytic.account'].sudo().create({'name': tag_product, 'company_id': 1,'active': True, 'partner_id': False, 'code': tag_product, 'plan_id': 4 })
+        else:
+            product_tag_lot = product_id.product_tmpl_id.account_tag_id
+
+        # Tag Supplier
+        tag_supplier = picking_id.partner_id.lot_code_prefix
+        supplier_tag_lot = self.env['account.analytic.account'].search([('name', '=', tag_supplier)], limit=1)
+        if not supplier_tag_lot:
+            supplier_tag_lot = self.env['account.analytic.account'].sudo().create({'name': tag_supplier, 'company_id': 1,'active': True, 'partner_id': False, 'code': tag_supplier, 'plan_id': 5 })
+
+        return [(6, 0, [account_tag_lot.id, product_tag_lot.id, supplier_tag_lot.id])]
     
     
     def get_next_lot_name(self, product_id, picking_id, next_number):
@@ -474,31 +499,6 @@ class Picking(models.Model):
     #         'location_dest_id': line_by_lot.location_dest_id.id,
     #         'sale_line_id': sale_order_line.id
     #     })
-
-    # def get_lot_tax_tag(self, product_id, picking_id, next_number):
-    #     # Tag Lot
-    #     tag_lot = '%s%s' % (picking_id.partner_id.lot_code_prefix,
-    #                         next_number)
-    #     account_tag_lot = self.env['account.analytic.tag'].search([('name', '=', tag_lot)], limit=1)
-    #     if not account_tag_lot:
-    #         account_tag_lot = self.env['account.analytic.tag'].sudo().create({'name': tag_lot})
-
-    #     # Tag Product
-    #     if not product_id.product_tmpl_id.account_tag_id:
-    #         tag_product = product_id.product_tmpl_id.lot_code_prefix
-    #         product_tag_lot = self.env['account.analytic.tag'].search([('name', '=', tag_product)], limit=1)
-    #         if not product_tag_lot:
-    #             product_tag_lot = self.env['account.analytic.tag'].sudo().create({'name': tag_product})
-    #     else:
-    #         product_tag_lot = product_id.product_tmpl_id.account_tag_id
-
-    #     # Tag Supplier
-    #     tag_supplier = picking_id.partner_id.lot_code_prefix
-    #     supplier_tag_lot = self.env['account.analytic.tag'].search([('name', '=', tag_supplier)], limit=1)
-    #     if not supplier_tag_lot:
-    #         supplier_tag_lot = self.env['account.analytic.tag'].sudo().create({'name': tag_supplier})
-
-    #     return [(6, 0, [account_tag_lot.id, product_tag_lot.id, supplier_tag_lot.id])]
 
 
 
