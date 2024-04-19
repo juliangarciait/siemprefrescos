@@ -24,7 +24,7 @@ class PartnerChangeSequenceWizard(models.TransientModel):
                 start = last_seq.name.find(record.partner_id.lot_code_prefix) + len(record.partner_id.lot_code_prefix) + 3
                 end = start + 4
                 record.last_used_number = int(last_seq.name[start:end])
-                record.new_number_next = record.last_used_number + 1
+                #record.new_number_next = record.last_used_number + 1
             else:
                 record.last_used_number = False
                 

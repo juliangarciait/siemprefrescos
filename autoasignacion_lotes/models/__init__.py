@@ -6,3 +6,4 @@ from . import stock_picking
 from . import purchase_order
 from . import account
 from . import stock_lot
+from . import sale_order

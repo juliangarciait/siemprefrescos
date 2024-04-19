@@ -10,7 +10,8 @@
     'category' : "Inventory",
     'depends' : [
         'purchase',
-        'product'
+        'product',
+        'sale'
     ],
     'data' : [
         'security/ir.model.access.csv',

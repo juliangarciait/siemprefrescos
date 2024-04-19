@@ -11,3 +11,13 @@ class AccountAnalyticAccount(models.Model):
     def create(self, vals_list):
         new_recs = super(AccountAnalyticAccount, self).create(vals_list)
         return new_recs
+    
+
+class AccountMove(models.Model):
+    _inherit = 'account.move' 
+
+
+    def action_post(self):
+        print("test")
+        res = super(AccountMove, self).action_post()
+        
