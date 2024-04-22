@@ -27,6 +27,8 @@ class StockQuant(models.Model):
                                 and product_id = %s                                
                     """
             if quant.lot_id:
+                if quant.lot_id == 280:
+                    print("hola")
                 sql += """ and lot_id = %s """
                 args.append(quant.lot_id.id)
             self._cr.execute(sql, tuple(args))

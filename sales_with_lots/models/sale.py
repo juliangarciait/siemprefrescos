@@ -131,9 +131,16 @@ class SaleOrderLine(models.Model):
     tracking = fields.Selection(related='product_id.tracking', readonly=True)
     lot_id = fields.Many2one('stock.lot', 'Lot', copy=False)
     lot_available_sell = fields.Float('Stock', readonly=1)
-    #invoice_date = fields.Date(related='partner_id.phone', string='Number')
+    # qty_to_deliver = fields.Float(compute='_compute_qty_to_deliver')
+    # #invoice_date = fields.Date(related='partner_id.phone', string='Number')
 
-
+    def _compute_qty_to_deliver(self):
+        super(SaleOrderLine, self)._compute_qty_to_deliver()
+        for line in self:
+            if line.qty_to_deliver > 0:
+                #pick_pendientes = line.order_id.picking_ids.filtered(lambda picking: picking.state not in ['cancel', 'done']).ids
+                if line.order_id.delivery_status == "full" or line.order_id.invoice_status == "invoiced":
+                    line.qty_to_deliver = 0
 
     def _prepare_procurement_values(self, group_id=False):
         res = super(SaleOrderLine, self)._prepare_procurement_values(group_id=group_id)

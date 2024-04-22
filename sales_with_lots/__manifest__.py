@@ -25,6 +25,7 @@ Long description of module's purpose
         # 'security/ir.model.access.csv',
         'views/sale_view.xml',
         'views/stock_picking_view.xml',
+        'views/stock_quant_view.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
