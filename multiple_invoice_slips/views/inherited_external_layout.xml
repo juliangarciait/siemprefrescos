@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+
+        <template id="custom_invoice_external_layout_ext" inherit_id="web.external_layout_standard">
+            <xpath expr="//div[@name='moto']" position="replace">
+                <div class="col-9 text-right" style="margin-top:22px;" t-esc="num_text or company.report_header" name="moto"/>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

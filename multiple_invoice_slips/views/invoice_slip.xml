@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_invoice_slip_list" model="ir.ui.view">
+            <field name="name">Invoice.slips.list</field>
+            <field name="model">invoice.slips</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" string="Invoice Slips">
+                    <field name="number"/>
+                    <field name="value"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_invoice_slips" model="ir.actions.act_window">
+            <field name="name">Invoice Slips</field>
+            <field name="res_model">invoice.slips</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_invoice_slip_list"/>
+        </record>
+    </data>
+</odoo>

@@ -10,5 +10,9 @@ no pagarse a su vencimiento causara intereses al tipo de:__
 % mensual pagadero en esta ciudad. juntamente con el principal y que asi mismo seran exigibles desde
 la fecha de su vencimiento de este documento hasta el dia de su liquidacion total.
         </xpath>
+        <!-- <xpath expr="//p[@name='incoterm']" position="after">
+         <span t-if="o.papel == 'original'">Original</span>
+         <span t-if="o.papel == 'copia'">Copia</span>
+        </xpath> -->
     </template>
 </odoo>
