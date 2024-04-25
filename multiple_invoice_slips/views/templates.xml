@@ -13,7 +13,7 @@
                         </t>
                     </t>
                 </t>
-            </xpath>>
+            </xpath>
         </template>
         <template id="custom_account_report_invoice_with_payments" inherit_id="account.report_invoice_with_payments">
              <xpath expr="//t[@t-foreach='docs']" position="replace">

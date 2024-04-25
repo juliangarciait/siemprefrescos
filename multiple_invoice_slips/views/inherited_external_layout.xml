@@ -7,5 +7,13 @@
             </xpath>
         </template>
 
+        <template id="custom_invoice_external_layout_boxed_ext" inherit_id="web.external_layout_boxed">
+            <xpath expr="//div[@name='company_address']" position="before">
+                <!-- <div name="company_address1" class="float-end mb4" t-field="o.num_text"/> -->
+                <div class="mt0 h4" t-esc="num_text or company.report_header" name="moto"/>
+                <!-- <div class="col-9 text-right" style="margin-top:22px;" t-field="num_text" name="moto1"/> -->
+            </xpath>
+        </template>
+
     </data>
 </odoo>
