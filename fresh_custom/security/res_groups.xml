@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups" id="fresh_stock_operation_without_permision_group">
+        <field name="name">stock operation sin validación</field>
+    </record>
+</odoo>
