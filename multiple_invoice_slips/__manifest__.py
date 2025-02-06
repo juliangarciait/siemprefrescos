@@ -13,7 +13,7 @@
     "website": "https://www.cybat.net",
     "price": 10.00,
     "currency": 'EUR',
-    'version': '14.0.0.1',
+    'version': '18.0.0.1',
     'depends': ['account'],
 
     # always loaded

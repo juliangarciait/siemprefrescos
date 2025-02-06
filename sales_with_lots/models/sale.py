@@ -33,15 +33,15 @@ class SaleOrder(models.Model):
 
 
 
-    def action_quotation_send(self):
-        ''' Opens a wizard to compose an email, with relevant mail template loaded by default '''
-        return super(SaleOrder, self.with_context(add_chatter_autofollow=False)).action_quotation_send()
+    # def action_quotation_send(self):
+    #     ''' Opens a wizard to compose an email, with relevant mail template loaded by default '''
+    #     return super(SaleOrder, self.with_context(add_chatter_autofollow=False)).action_quotation_send()
         
-    @api.model
-    def action_quotation_sent(self):
-        """ Metodo heredado to adds add_chatter_autofollow=False
-            so res.partner is not added as follower to the chatter."""
-        return super(SaleOrder, self.with_context(add_chatter_autofollow=False)).action_quotation_sent()
+    # @api.model
+    # def action_quotation_sent(self):
+    #     """ Metodo heredado to adds add_chatter_autofollow=False
+    #         so res.partner is not added as follower to the chatter."""
+    #     return super(SaleOrder, self.with_context(add_chatter_autofollow=False)).action_quotation_sent()
 
     def action_confirm(self):
         lines = self.order_line

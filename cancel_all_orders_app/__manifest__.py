@@ -2,7 +2,7 @@
 {
 	'name': 'All in One Cancel Sale, Purchase, Picking and Invoice',
 	"author": "Julian Garcia",
-	'version': '16.0.0.1',
+	'version': '18.0.0.1',
 	"images":['static/description/main_screenshot.png'],
 	'summary': "App Cancel All in one cancel orders cancel purchase cancel picking cancel landed cost cancel sale cancel inventory adjustment cancel all order cancel delivery order cancel invoice delete invoice cancel stock transfer cancel stock picking cancel stock move ",
 	'description': """ 

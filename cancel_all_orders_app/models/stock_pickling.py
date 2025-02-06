@@ -22,7 +22,7 @@ class Inventory_picking(models.Model):
 				for moves in picking.move_ids:
 					for line in moves.mapped('move_line_ids'):
 						line.result_package_id.unpack()
-					moves.mapped('move_line_ids').write({'qty_done': 0.0})
+					moves.mapped('move_line_ids').write({'quantity': 0.0})
 				picking.package_level_ids.filtered(lambda p: not p.move_ids).unlink()
 				picking.write({'is_locked': True})
 			else:
@@ -40,7 +40,7 @@ class StockMove(models.Model):
 	def _do_unreserve(self):
 		moves_to_unreserve = self.env['stock.move']        
 		for move in self:
-			if self.user_has_groups('cancel_all_orders_app.group_cancel_stock_picking'):
+			if self.env.user.has_group('cancel_all_orders_app.group_cancel_stock_picking'):
 				if move.state == 'cancel':
 					# We may have cancelled move in an open picking in a "propagate_cancel" scenario.
 					continue
@@ -75,7 +75,7 @@ class StockMove(models.Model):
 				if all(state in ('done', 'cancel') for state in siblings_states):
 					move.move_dest_ids.write({'procure_method': 'make_to_stock'})
 					move.move_dest_ids.write({'move_orig_ids': [(3, move.id, 0)]})
-			if move.quantity_done:
+			if move.quantity:
 				if move.picking_id.picking_type_id.code in ['outgoing','internal']:
 					for move_id in move:
 						for line in move_id.move_line_ids:                                  
@@ -224,7 +224,7 @@ class stock_move_line(models.Model):
 	def unlink(self):
 		precision = self.env['decimal.precision'].precision_get('Product Unit of Measure')
 		for ml in self:
-			if self.user_has_groups('cancel_all_orders_app.group_cancel_stock_picking') == False and ml.state =='done':
+			if self.env.user.has_group('cancel_all_orders_app.group_cancel_stock_picking') == False and ml.state =='done':
 				if ml.state in ('done', 'cancel'):
 					raise UserError(_('You can not delete product moves if the picking is done. You can only correct the done quantities.'))
 				# Unlinking a move line should unreserve.
@@ -236,7 +236,7 @@ class stock_move_line(models.Model):
 							self.env['stock.quant']._update_reserved_quantity(ml.product_id, ml.location_id, -ml.qty_done, lot_id=False, package_id=ml.package_id, owner_id=ml.owner_id, strict=True)
 						else:
 							raise
-			elif self.user_has_groups('cancel_all_orders_app.group_cancel_stock_picking') == True and ml.state =='done':
+			elif self.env.user.has_group('cancel_all_orders_app.group_cancel_stock_picking') == True and ml.state =='done':
 				if ml.product_id.type == 'product' and not ml.location_id.should_bypass_reservation() and not float_is_zero(ml.qty_done, precision_digits=precision):
 					try:
 						self.env['stock.quant']._update_reserved_quantity(ml.product_id, ml.location_id, -ml.qty_done, lot_id=ml.lot_id, package_id=ml.package_id, owner_id=ml.owner_id, strict=True)
@@ -247,11 +247,11 @@ class stock_move_line(models.Model):
 							raise
 		moves = self.mapped('move_id')
 		for move in moves:
-			if self.user_has_groups('cancel_all_orders_app.group_cancel_stock_picking') == False and move.state != 'done':
+			if self.env.user.has_group('cancel_all_orders_app.group_cancel_stock_picking') == False and move.state != 'done':
 				res = super(stock_move_line, self).unlink()
 			else:
 				res = True
-			if self.user_has_groups('cancel_all_orders_app.group_cancel_stock_picking') == True and move.state != 'done':
+			if self.env.user.has_group('cancel_all_orders_app.group_cancel_stock_picking') == True and move.state != 'done':
 				res = super(stock_move_line, self).unlink()
 			if moves:
 				moves._recompute_state()
