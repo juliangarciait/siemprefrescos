@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <odoo>
 
     <record id="view_purchase_order_form_inherited_lot" model="ir.ui.view">
@@ -8,7 +8,7 @@
         <field name="arch" type="xml">        
             <!-- Lot code -->            
             <xpath expr="//field[@name='currency_id']" position="after">
-				<field name="lot" attrs="{'invisible': [('lot', '=', 'False')]}"/>
+				<field name="lot" invisible="lot == 'False'"/>
                 <!-- <field name="account_tag_id"/> -->
 			</xpath>
         </field>
@@ -21,7 +21,7 @@
         <field name="arch" type="xml">        
             <!-- Lot code -->            
             <field name="invoice_status" position="after">
-				<field name="lot" />
+				<field name="lot"/>
                 <!-- <field name="account_tag_id"/> -->
 			</field>
         </field>

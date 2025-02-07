@@ -34,7 +34,7 @@ class Picking(models.Model):
             # Create Lines
             vals = move._prepare_move_line_vals()
             vals['lot_id'] = move.lot_id.id
-            vals['qty_done'] = move.product_qty
+            vals['quantity'] = move.product_qty
             move_line_vals_list.append(vals)
         if len(move_line_vals_list) > 0:
             self.env['stock.move.line'].sudo().create(move_line_vals_list)

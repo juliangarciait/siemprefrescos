@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 {
-    'name' : "auto asignacion de lotes odoo 16",
+    'name' : "auto asignacion de lotes odoo 18",
     'summary' : """
     Módulo que añade el status del delivery relacionado a la venta en la vista tree, agrega porcentaje en deliveries y filtros por lotes 
     """, 

@@ -9,16 +9,16 @@
             <!-- Lot code -->      
             <xpath expr="//group[@name='purchase']" position="after">
                 <group string="Lots" name="lots">
-                    <field name="lot_code_prefix" attrs="{'invisible': [('type', '!=', 'contact')]}"/>
+                    <field name="lot_code_prefix" invisible = "type != 'contact'"/>
                     <label for="sequence_id"/>
                     <div>
                         <field name="sequence_id" class="oe_inline"/>
                         <button string="Create Sequence" type="object"
                             name="action_create_vendor_sequence"
-                            attrs="{'invisible': ['|',('sequence_id', '!=', False), ('lot_code_prefix', '=', False)]}"/>
+                            invisible="sequence_id or not lot_code_prefix"/>
                         <button string="Update Sequence" type="object"
                             name="action_change_vendor_sequence"
-                            attrs="{'invisible': [('sequence_id', '=', False)]}"/> 
+                            invisible = "not sequence_id"/> 
                     </div>
                 </group>
             </xpath>  
