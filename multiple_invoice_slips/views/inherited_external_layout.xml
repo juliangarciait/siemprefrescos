@@ -1,23 +1,20 @@
 <odoo>
     <data>
 
-        <template id="custom_invoice_external_layout_ext" inherit_id="web.external_layout_boxed">
+        <template id="custom_invoice_external_layout_ext_boxed" inherit_id="web.external_layout_boxed">
             <!-- <xpath expr="//div[@class='o_company_tagline']" position="replace"> -->
                 <!-- <div class="col-9 text-right" style="margin-top:22px;" t-esc="num_text or company.report_header" name="moto"/> -->
 
-            <xpath expr="//strong[@class='o_company_tagline']" position="replace">
+            <xpath expr="//strong[@t-field='company.report_header']" position="replace">
                 <strong t-esc="num_text" class="o_company_tagline">Company tagline</strong>
             </xpath>
         </template>
 
-        <template id="custom_invoice_external_layout_ext" inherit_id="web.external_layout_standard">
-            <!-- <xpath expr="//div[@class='o_company_tagline']" position="replace"> -->
-                <!-- <div class="col-9 text-right" style="margin-top:22px;" t-esc="num_text or company.report_header" name="moto"/> -->
-
-            <xpath expr="//strong[@class='o_company_tagline']" position="replace">
+        <!-- <template id="custom_invoice_external_layout_ext_standard" inherit_id="web.external_layout_standard">
+            <xpath expr="//strong[@t-field='company.report_header']" position="replace">
                 <strong t-esc="num_text" class="o_company_tagline">Company tagline</strong>
             </xpath>
-        </template>
+        </template> -->
 
         <!-- <template id="custom_invoice_external_layout_boxed_ext" inherit_id="web.external_layout_boxed"> -->
             <!-- <xpath expr="//div[@name='company_address']" position="before"> -->
