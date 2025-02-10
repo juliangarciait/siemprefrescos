@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 {
-    'name' : "facturacion electronica mexicana custom odoo 16",
+    'name' : "facturacion electronica mexicana custom odoo 18",
     'summary' : """
-    Módulo que añade el status del delivery relacionado a la venta en la vista tree, agrega porcentaje en deliveries y filtros por lotes 
+    Módulo que añade el status del delivery relacionado a la venta en la vista tree, agrega porcentaje en deliveries y filtros por lotes
     """, 
     'author' : "Julian Garcia", 
     'website' : "",
@@ -15,7 +15,6 @@
     ],
     'data' : [
         'views/report_invoice.xml',
-        'views/res_partner.xml',
         'views/account_move.xml'
 
     ],

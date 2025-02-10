@@ -6,18 +6,16 @@
             <field name="model">res.config.settings</field>
             <field name="inherit_id" ref="account.res_config_settings_view_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//div[@id='invoicing_settings']" position="after">
-                    <h2>Invoice Slips</h2>
-                    <div class="row mt16 o_settings_container">
-                        <div class="col-12 col-lg-6 o_setting_box">
-                            <group>
+                <xpath expr="//block[@id='invoicing_settings']" position="after">
+                    <block title="Invoice Slips" id="invoicing_slips_settings">
+                        <setting id="invoice_slip_test" help="test">
                                 <field name="invoice_slip"/>
-                            </group>
-                        </div>
-                        <br/>
-                        <button name="%(action_invoice_slips)d" icon="fa-arrow-right" type="action"
-                                string="Manage Invoice Slips" class="btn-link o_web_settings_access_rights"/>
-                    </div>
+                                    <div class="mt8">
+                                        <button name="%(action_invoice_slips)d" icon="oi-arrow-right"
+                                            type="action" string="Manage Invoice Slips" class="btn-link"/>
+                                    </div>
+                        </setting>
+                    </block>
                 </xpath>
             </field>
         </record>

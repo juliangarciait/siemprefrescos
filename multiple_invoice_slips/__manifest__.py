@@ -14,7 +14,7 @@
     "price": 10.00,
     "currency": 'EUR',
     'version': '18.0.0.1',
-    'depends': ['account'],
+    'depends': ['account', 'web'],
 
     # always loaded
     'data': [
