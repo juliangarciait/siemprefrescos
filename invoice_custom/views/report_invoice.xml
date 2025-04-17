@@ -12,7 +12,7 @@ no pagarse a su vencimiento causara intereses al tipo de:__
 la fecha de su vencimiento de este documento hasta el dia de su liquidacion total.
         </div>
         <div class="text-center">
-        _______________________________________<br/><span t-field="o.partner_id"/>
+        <br/>_______________________________________<br/><span t-field="o.partner_id"/>
         </div>
         </xpath>
         <!-- <xpath expr="//p[@name='incoterm']" position="after">

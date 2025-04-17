@@ -1,0 +1,22 @@
+{
+    "configurations": [
+    {
+        "name": "Python: Odoo",
+        "type": "python",
+        "request": "launch",
+        "stopOnEntry": false,
+        "python": "${command:python.interpreterPath}",
+        "console": "integratedTerminal",
+        "program": "${workspaceRoot}/../../odoo/odoo-bin",
+        "args": [
+            "--config=${workspaceRoot}/../..odoo-server.conf",
+        ],
+        "cwd": "${workspaceRoot}",
+        "env": {},
+        "envFile": "${workspaceRoot}/../../venv",
+        "debugOptions": [
+            "RedirectOutput"
+        ]
+    }
+    ]
+}

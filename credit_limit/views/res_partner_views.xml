@@ -1,0 +1,19 @@
+<record id="view_res_partner_form_credit_limit" model="ir.ui.view">
+    <field name="name">res.partner.form.credit.limit</field>
+    <field name="model">res.partner</field>
+    <field name="arch" type="xml">
+        <form string="Partner">
+            <sheet>
+                <group>
+                    <field name="credito_autorizado"/>
+                    <field name="credito_disponible" readonly="1"/>
+                </group>
+                <group>
+                    <field name="name"/>
+                    <field name="email"/>
+                    <!-- Other existing fields -->
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
