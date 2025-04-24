@@ -23,6 +23,8 @@ class AccountPaymentRegister(models.TransientModel):
         '''
         for wizard in self:
             lines = wizard.line_ids._origin.sorted('id')
+            print("aqui")
+            print(lines)
 
             if len(lines.company_id.root_id) > 1:
                 raise UserError(_("You can't create payments for entries belonging to different companies."))
@@ -77,3 +79,14 @@ class AccountPaymentRegister(models.TransientModel):
                 batch_vals.append(vals)
 
             wizard.batches = batch_vals
+
+    
+    def action_create_payments(self):
+        # Ordenamos las líneas a pagar por fecha
+        self = self.with_context(
+            active_ids=sorted(
+                self._context.get('active_ids', []),
+                key=lambda id: self.env['account.move'].browse(id).invoice_date or self.env['account.move'].browse(id).date
+            )
+        )
+        return super().action_create_payments()
