@@ -1,0 +1,51 @@
+<odoo>
+    <record id="product_variant_conversion_form" model="ir.ui.view">
+        <field name="name">product.variant.conversion.form</field>
+        <field name="model">product.variant.conversion</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <!-- Agrega botones relacionados si es necesario -->
+                    </div>
+                    <field name="name"/>
+                    <field name="product_id" readonly="state != 'draft'"/>
+                    <field name="lot_id" readonly="state != 'draft'" required="product_id != False" />
+                    <field name="sale_order_id" readonly="state != 'draft'"/>
+                    <field name="conversion_lines" readonly="state != 'draft'" context="{'default_conversion_id': id}">
+                        <tree editable="bottom">
+                            <field name="product_id"/>
+                            <!-- <field name="quantity"/> -->
+                            <field name="lot_id"/>  
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="product_variant_conversion_tree" model="ir.ui.view">
+        <field name="name">product.variant.conversion.tree</field>
+        <field name="model">product.variant.conversion</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="product_id"/>
+                <field name="lot_id"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="product_variant_conversion_action" model="ir.actions.act_window">
+        <field name="name">Product Variant Conversions</field>
+        <field name="res_model">product.variant.conversion</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="product_variant_conversion_menu" name="Variant Conversions" parent="stock.menu_stock_inventory_control" action="product_variant_conversion_action"/>
+</odoo>

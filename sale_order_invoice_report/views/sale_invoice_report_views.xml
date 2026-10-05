@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Vista Lista (Tree) -->
+    <record id="view_sale_invoice_report_list" model="ir.ui.view">
+        <field name="name">sale.invoice.report.list</field>
+        <field name="model">sale.invoice.report</field>
+        <field name="arch" type="xml">
+            <list string="Reporte de Ventas y Facturación" create="false" edit="false" delete="false">
+                <field name="order_name" string="Orden"/>
+                <field name="date_order" string="Fecha de creación"/>
+                <field name="picking_ref" string="Referencia"/>
+                <field name="partner_id" string="Cliente"/>
+                <field name="partner_vat" string="RFC/ID FISCAL"/>
+                <field name="currency_id" string="Moneda"/>
+                <field name="folio_fiscal" string="Folio Fiscal"/>
+                <field name="product_id" string="Producto"/>
+                <field name="lot_id" string="Lote"/>
+                <field name="quantity" string="Cantidad" sum="Total Cantidad"/>
+                <field name="uom_id" string="Medida"/>
+                <field name="price_unit" string="Precio Unit."/>
+                <field name="price_subtotal" string="Subtotal" sum="Total Subtotal"/>
+                <field name="tax_rate" string="IVA"/>
+                <field name="price_total" string="Total" sum="Gran Total"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista Búsqueda y Filtros (Search) -->
+    <record id="view_sale_invoice_report_search" model="ir.ui.view">
+        <field name="name">sale.invoice.report.search</field>
+        <field name="model">sale.invoice.report</field>
+        <field name="arch" type="xml">
+            <search string="Buscar en Reporte">
+                <field name="order_name" string="Orden"/>
+                <field name="partner_id" string="Cliente"/>
+                <field name="partner_vat" string="RFC/ID Fiscal"/>
+                <field name="folio_fiscal" string="Folio Fiscal"/>
+                <field name="picking_ref" string="Referencia"/>
+                <field name="product_id" string="Producto"/>
+                <field name="lot_id" string="Lote"/>
+                <separator/>
+                <filter string="Con Lote" name="with_lot" domain="[('lot_id', '!=', False)]"/>
+                <filter string="Sin Lote" name="without_lot" domain="[('lot_id', '=', False)]"/>
+                <separator/>
+                <filter string="Fecha de Creación" name="filter_date_order" date="date_order"/>
+                <group expand="1" string="Agrupar Por">
+                    <filter string="Cliente" name="group_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Orden" name="group_order" context="{'group_by': 'order_id'}"/>
+                    <filter string="Producto" name="group_product" context="{'group_by': 'product_id'}"/>
+                    <filter string="Lote" name="group_lot" context="{'group_by': 'lot_id'}"/>
+                    <filter string="Moneda" name="group_currency" context="{'group_by': 'currency_id'}"/>
+                    <filter string="Fecha (Mes)" name="group_date_month" context="{'group_by': 'date_order:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Vista Pivot -->
+    <record id="view_sale_invoice_report_pivot" model="ir.ui.view">
+        <field name="name">sale.invoice.report.pivot</field>
+        <field name="model">sale.invoice.report</field>
+        <field name="arch" type="xml">
+            <pivot string="Análisis de Ventas y Facturas">
+                <field name="partner_id" type="row"/>
+                <field name="order_name" type="row"/>
+                <field name="product_id" type="row"/>
+                <field name="quantity" type="measure"/>
+                <field name="price_subtotal" type="measure"/>
+                <field name="price_total" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Acción de Ventana -->
+    <record id="action_sale_invoice_report" model="ir.actions.act_window">
+        <field name="name">Reporte Líneas Venta / Factura / Lotes</field>
+        <field name="res_model">sale.invoice.report</field>
+        <field name="view_mode">list,pivot</field>
+        <field name="search_view_id" ref="view_sale_invoice_report_search"/>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encontraron registros de ventas ligadas con facturas validadas.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menús en Ventas y Facturación -->
+    <menuitem id="menu_sale_invoice_report_root"
+              name="Líneas Venta / Factura / Lotes"
+              action="action_sale_invoice_report"
+              parent="sale.menu_sale_report"
+              sequence="30"/>
+
+</odoo>

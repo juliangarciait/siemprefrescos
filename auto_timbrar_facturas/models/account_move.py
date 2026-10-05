@@ -8,6 +8,6 @@ class AccountMove(models.Model):
         # Call the super method to ensure the original functionality is preserved
         super(AccountMove, self).action_post()
         
-        if self.journal_id.timbrar_mx:
+        if self.journal_id.timbrar_mx and self.move_type == 'out_invoice':
             self.ensure_one()
             self.env['account.move.send']._generate_and_send_invoices(self, sending_methods=['manual'], extra_edis={'mx_cfdi'})
